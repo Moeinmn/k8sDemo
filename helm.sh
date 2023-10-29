@@ -27,3 +27,7 @@ helm get values monitoring
 
 # Generating kubernetes yaml files (In this approach we no longer need to install helm in system)
 helm template monitoring ./kube-prometheus-stack/ --values=.//kube-prometheus-stack/my-values.yaml > monitoring-stack.yaml
+
+# Benefits of using dynamic features of helm charts
+# Creating helm chart
+helm create moeinTest
