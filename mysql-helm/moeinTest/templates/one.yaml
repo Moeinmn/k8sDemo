@@ -1,4 +1,10 @@
 hello:
   # the {{}} are called GO actions
   world: hello {{.Values.greeting.first}}
+
+  # Functions example 
+  WORLD: hello {{upper .Values.greeting.first}}
+
+  #Pipe example
+  pipe: hello {{.Values.greeting.first | upper}}
 test: {{ printf "false"}}
