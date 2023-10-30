@@ -1,5 +1,5 @@
 hello:
-  # the {{}} are called GO actions
+  # these are called GO actions
   world: hello {{.Values.greeting.first}}
 
   # Functions example 
@@ -8,3 +8,8 @@ hello:
   #Pipe example
   pipe: hello {{.Values.greeting.first | upper}}
 test: {{ printf "false"}}
+
+# Control flow example
+image: xyz:v1.0.0{{if eq .Values.env "dev"}}-dev{{else}}-prod{{end}}
+
+#THis is not true , we cant use  equal signs in this template
