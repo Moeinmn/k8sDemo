@@ -31,3 +31,5 @@ helm template monitoring ./kube-prometheus-stack/ --values=.//kube-prometheus-st
 # Benefits of using dynamic features of helm charts
 # Creating helm chart
 helm create moeinTest
+
+# yaml templates are created using GGGOOOOO yaml templating language

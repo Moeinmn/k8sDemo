@@ -1,3 +1,4 @@
 hello:
+  # the {{}} are called GO actions
   world: hello {{.Values.greeting.first}}
 test: {{ printf "false"}}
