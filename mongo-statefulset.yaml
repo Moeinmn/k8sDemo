@@ -1,0 +1,25 @@
+# Stateless apps are deployed using deployments component
+# Stateful apps are deployed using StatefulSet components (mostly statful apps that need replication)
+
+# NOTE : statefulsets allow replication and configuring storage same as deployments
+# DIFFERENCES from deployment :
+# 1- cant be created / deleted at the same time
+# 2- cant be randomly addressed
+# 3- sticky identity for each pod (-created from same specfication but not interchangeable-) (allow to retain state and retain role)
+# 4- persistant identifier accross any re-scheduling (exp: ID-0 , ID-1 , ID-2)
+
+# WHY this pod identity is necessary?
+# for answering this we need to know about data base replication 
+# while replicationg data base , we are going to have master salve pattern
+# the master can do read / write operations
+# the slaves can only do read operations 
+# each pod is going to have its own data storage , wether transient or persistand vol, and it cntains
+#  2 type os data 1- actuall db data 2- Pod State
+
+# 5- Pod identity is not random (predictable name ) -> $(statefulset name)-$(ordinal) -> exp : mysql-0 (master), mysql-1 (slave), mysql-2 (slave)
+# pod deletion is also from end 2 -> 1 -> 0
+
+# 6- Fixed individual dns names -> $(podname).$(governing service domain) -> exp: mysql-0.svc2 , mysql-0.svc2
+
+# NOTE: 1- predictable podname and fixed individual dns name leads to when pod restart IP address will change
+# but the NAME and ENDPOINT stays the same
