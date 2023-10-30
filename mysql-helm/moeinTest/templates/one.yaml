@@ -16,3 +16,6 @@ image: xyz:v1.0.0{{if eq .Values.env "dev"}}-dev{{else}}-prod{{end}}
 # add template
 # NOTE: there is problem with indetetion problem with this approach so we nee to use indent function to fix that
 {{include "firstTemplate" .}}
+
+# Release is a global var passed into yaml from helm (these are parameters passed whill installing charts with helm)
+release:  {{.Release.Name}}
