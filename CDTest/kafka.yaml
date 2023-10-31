@@ -1,0 +1,1 @@
+kubectl apply -f https://github.com/strimzi/strimzi-kafka-operator/releases/download/0.27.0/strimzi-cluster-operator-0.27.0.yaml -n kafka-ns

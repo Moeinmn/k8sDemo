@@ -33,3 +33,7 @@ helm template monitoring ./kube-prometheus-stack/ --values=.//kube-prometheus-st
 helm create moeinTest
 
 # yaml templates are created using GGGOOOOO yaml templating language
+
+
+-----------------------
+# DEBZ

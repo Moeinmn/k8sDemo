@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-db-connector
+  namespace: debezium
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-db-connector
+  template:
+    metadata:
+      labels:
+        app: my-db-connector
+    spec:
+      containers:
+      - name: my-db-connector
+        image: debezium/connect:1.7
+        env:
+        - name: BOOTSTRAP_SERVERS
+          value: kafka-bootstrap-server:9092
+        - name: GROUP_ID
+          value: my-db-connector-group
+        - name: CONFIG_STORAGE_TOPIC
+          value: my-db-connector-configs
+        - name: OFFSET_STORAGE_TOPIC
+          value: my-db-connector-offsets
+        - name: STATUS_STORAGE_TOPIC
+          value: my-db-connector-status
+        - name: CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE
+          value: "false"
+        - name: CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE
+          value: "false"
+        - name: CONNECT_VALUE_CONVERTER
+          value: org.apache.kafka.connect.json.JsonConverter
+        - name: CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE
+          value: "false"
+        - name: CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE
+          value: "false"
